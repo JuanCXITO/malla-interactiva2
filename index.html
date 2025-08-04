@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Malla Curricular Interactiva</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    .curso { border: 1px solid #ccc; margin: 5px; padding: 10px; cursor: pointer; }
+    .descripcion { display: none; color: gray; }
+  </style>
+</head>
+<body>
+  <h1>Malla Curricular TENS</h1>
+  <div class="curso" onclick="toggle(this)">
+    Anatomía y Fisiología
+    <div class="descripcion">Estudio del cuerpo humano y sus funciones.</div>
+  </div>
+  <div class="curso" onclick="toggle(this)">
+    Cuidados Básicos de Enfermería
+    <div class="descripcion">Técnicas básicas de atención al paciente.</div>
+  </div>
+
+  <script>
+    function toggle(el) {
+      const desc = el.querySelector('.descripcion');
+      desc.style.display = desc.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
+</body>
+</html>
