@@ -1,30 +1,136 @@
-<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html><html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Malla Curricular Interactiva</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Malla Interactiva Arquitectura</title>
   <style>
-    body { font-family: Arial; padding: 20px; }
-    .curso { border: 1px solid #ccc; margin: 5px; padding: 10px; cursor: pointer; }
-    .descripcion { display: none; color: gray; }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      padding: 2rem;
+    }
+    .semestre {
+      margin-bottom: 2rem;
+    }
+    .semestre h2 {
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #ccc;
+    }
+    .ramo {
+      display: inline-block;
+      padding: 1rem;
+      margin: 0.5rem;
+      border-radius: 8px;
+      color: white;
+      font-weight: bold;
+      min-width: 180px;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
-  <h1>Malla Curricular TENS</h1>
-  <div class="curso" onclick="toggle(this)">
-    Anatomía y Fisiología
-    <div class="descripcion">Estudio del cuerpo humano y sus funciones.</div>
-  </div>
-  <div class="curso" onclick="toggle(this)">
-    Cuidados Básicos de Enfermería
-    <div class="descripcion">Técnicas básicas de atención al paciente.</div>
-  </div>
+  <h1>Malla Interactiva Arquitectura</h1>
+  <div id="contenedor"></div>  <script>
+    const malla = {
+      "I": [
+        "Matemática aplicada para arquitectura I",
+        "Representación arquitectónica",
+        "Historia y Teoría de la Arquitectura I",
+        "Comprensión Lectora en Arquitectura",
+        "Taller de Arquitectura I: Introducción al Diseño",
+        "Inglés I"
+      ],
+      "II": [
+        "Matemática aplicada para arquitectura II",
+        "Geometría y Representación I",
+        "Historia y Teoría de la Arquitectura II",
+        "Taller de Arquitectura II",
+        "Inglés II"
+      ],
+      "III": [
+        "Urbanismo I",
+        "Geometría y Representación II",
+        "Estructura I",
+        "Taller de Arquitectura III",
+        "Inglés III"
+      ],
+      "IV": [
+        "Urbanismo II",
+        "Modelación Digital para Arquitectos",
+        "Estructura II",
+        "Expresión Oral en Arquitectura",
+        "Taller de Arquitectura IV"
+      ],
+      "V": [
+        "Urbanismo III",
+        "BIM / Modelación",
+        "Estructura III",
+        "Taller de Arquitectura V",
+        "Introducción a la Fe"
+      ],
+      "VI": [
+        "Sistemas Constructivos I",
+        "BIM / Revisión",
+        "Topografía",
+        "Tecnología en Diseño y Materialización",
+        "Taller de Arquitectura VI",
+        "Ética Cristiana"
+      ],
+      "VII": [
+        "Sistemas Constructivos II",
+        "BIM / Coordinación",
+        "Edificio y Entorno I",
+        "Metodología de la Investigación",
+        "Taller de Arquitectura VII"
+      ],
+      "VIII": [
+        "Sistemas Constructivos III",
+        "BIM / Dirección y Gestión",
+        "Edificio y Entorno II",
+        "Taller de Arquitectura VIII",
+        "Certificación I"
+      ],
+      "IX": [
+        "Electivo I",
+        "Eficiencia Energética",
+        "Arquitectura Sustentable I",
+        "Gestión de Proyectos",
+        "Taller de Arquitectura IX",
+        "Certificación II"
+      ],
+      "X": [
+        "Electivo II",
+        "Normativa en Proyectos de Arquitectura",
+        "Arquitectura Sustentable II",
+        "Formulación y Evaluación de Proyectos",
+        "Taller de Arquitectura X",
+        "Certificación III"
+      ],
+      "XI": [
+        "Electivo III",
+        "Taller de Titulación - Módulo Integrador Profesional"
+      ]
+    };
 
-  <script>
-    function toggle(el) {
-      const desc = el.querySelector('.descripcion');
-      desc.style.display = desc.style.display === 'block' ? 'none' : 'block';
+    function colorAleatorio() {
+      const h = Math.floor(Math.random() * 360);
+      return hsl(${h}, 70%, 60%);
     }
-  </script>
-</body>
+
+    const contenedor = document.getElementById("contenedor");
+
+    Object.entries(malla).forEach(([semestre, ramos]) => {
+      const divSemestre = document.createElement("div");
+      divSemestre.className = "semestre";
+      divSemestre.innerHTML = <h2>Semestre ${semestre}</h2>;
+      ramos.forEach(ramo => {
+        const divRamo = document.createElement("div");
+        divRamo.className = "ramo";
+        divRamo.style.backgroundColor = colorAleatorio();
+        divRamo.textContent = ramo;
+        divSemestre.appendChild(divRamo);
+      });
+      contenedor.appendChild(divSemestre);
+    });
+  </script></body>
 </html>
