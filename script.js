@@ -89,14 +89,26 @@ const contenedor = document.getElementById("contenedor");
 Object.entries(malla).forEach(([semestre, ramos]) => {
   const divSemestre = document.createElement("div");
   divSemestre.className = "semestre";
-  divSemestre.innerHTML = `<h2>Semestre ${semestre}</h2>`;
+
+  const encabezado = document.createElement("h2");
+  encabezado.textContent = `Semestre ${semestre}`;
+  encabezado.addEventListener("click", () => {
+    divRamos.classList.toggle("mostrar");
+  });
+
+  const divRamos = document.createElement("div");
+  divRamos.className = "ramos";
+
   ramos.forEach(ramo => {
     const divRamo = document.createElement("div");
     divRamo.className = "ramo";
     divRamo.style.backgroundColor = colorAleatorio();
     divRamo.textContent = ramo;
-    divSemestre.appendChild(divRamo);
+    divRamos.appendChild(divRamo);
   });
+
+  divSemestre.appendChild(encabezado);
+  divSemestre.appendChild(divRamos);
   contenedor.appendChild(divSemestre);
 });
 
